@@ -1,0 +1,10 @@
+FROM coreoasis/model_execution_worker:OASIS_0_0_0_167
+
+COPY ./src/model_execution_worker/GEMFoundation ./model_execution_worker/GEMFoundation
+COPY ./model_data/ /var/oasis/model_data/
+COPY ./model_data/GMO /var/oasis/model_data/GEMFoundation/GMO
+RUN touch /var/log/oasis/celery_worker.log
+RUN chmod 666 /var/log/oasis/celery_worker.log
+
+ENTRYPOINT
+# Define entry points here

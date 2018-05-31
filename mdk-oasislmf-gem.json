@@ -1,0 +1,17 @@
+{
+    "keys_data_path": "keys_data/GMO",
+    "model_version_file_path": "keys_data/GMO/ModelVersion.csv", 
+    "lookup_package_path": "src/keys_server",
+    "canonical_account_profile_json_path": "oasislmf-piquake-canonical-acc-profile.json",
+    "canonical_exposures_profile_json_path": "oasislmf-piquake-canonical-loc-profile.json",
+    "source_exposures_file_path": "tests/data/SourceLocPiQuake-10.csv", 
+    "source_account_file_path": "tests/data/SourceAccPiWind.csv", 
+    "source_exposures_validation_file_path": "flamingo/generic_model/Files/ValidationFiles/Generic_Earthquake_SourceLoc.xsd",
+    "source_account_validation_file_path": "flamingo/generic_model/Files/ValidationFiles/Generic_CanAcc_A.xsd",
+    "source_to_canonical_exposures_transformation_file_path": "flamingo/generic_model/TransformationFiles/MappingMapToGeneric_Earthquake_CanLoc_A.xslt",
+    "source_to_canonical_account_transformation_file_path": "flamingo/generic_model/Files/TransformationFiles/MappingMapToGeneric_CanAcc_A.xslt",
+    "canonical_exposures_validation_file_path": "flamingo/generic_model/Files/ValidationFiles/Generic_Earthquake_CanLoc_B.xsd",
+    "canonical_to_model_exposures_transformation_file_path": "flamingo/generic_model/TransformationFiles/MappingMapToGeneric_Earthquake_ModelLoc.xslt", 
+    "analysis_settings_json_file_path": "analysis_settings.json",
+    "model_data_path": "model_data/GMO"
+}

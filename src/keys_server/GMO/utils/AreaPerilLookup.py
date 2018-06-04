@@ -1,6 +1,4 @@
-#) -*- coding: utf-8 -*-
-
-__all__ = ['AreaPerilLookup']
+# ) -*- coding: utf-8 -*-
 
 import io
 import csv
@@ -17,6 +15,8 @@ from oasislmf.utils.status import (
     KEYS_STATUS_SUCCESS,
 )
 
+__all__ = ['AreaPerilLookup']
+
 
 class AreaPerilLookup(object):
     '''
@@ -31,23 +31,25 @@ class AreaPerilLookup(object):
                 dr = csv.DictReader(f)
                 self.load_lookup_data(dr)
 
-
     def load_lookup_data(self, data):
         '''
         Load the lookup data.
         Args:
             data: the lookup data.
         '''
+        print 'AreaPerilLookup.load_lookup_data: {0}'.format(
+            data)
         self._lookup_data = [
             (
                 int(r['areaperil_id']),
-		Point(float(r['lat']),float(r['lon']))
-#                MultiPoint(
-#                    tuple((float(r['LAT{}'.format(i)]),float(r['LON{}'.format(i)])) for i in range(1, 5))
-#                ).convex_hull
+                Point(float(r['lat']), float(r['lon']))
+                # MultiPoint(tuple((
+                #        float(r['LAT{}'.format(i)]),
+                #        float(r['LON{}'.format(i)])
+                #    ) for i in range(1, 5))
+                # ).convex_hull
             ) for r in data
         ]
-
 
     def validate_lat(self, lat):
         '''
@@ -62,7 +64,6 @@ class AreaPerilLookup(object):
         except ValueError:
             return False
 
-
     def validate_lon(self, lon):
         '''
         Check that a string or number is a valid longitude.
@@ -76,7 +77,6 @@ class AreaPerilLookup(object):
         except ValueError:
             return False
 
-
     def do_lookup_location(self, location):
         '''
         Perform a lookup on a specified location.
@@ -86,7 +86,7 @@ class AreaPerilLookup(object):
             Lookup result
         '''
         logging.debug("Looking up location.")
-        
+
         status = KEYS_STATUS_NOMATCH
         area_peril_id = None
         message = ''

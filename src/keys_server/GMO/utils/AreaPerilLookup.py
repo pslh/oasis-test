@@ -104,6 +104,9 @@ class AreaPerilLookup(object):
                 if cell.intersects(loc_point):
                     area_peril_id = cell_area_peril_id
                     status = KEYS_STATUS_SUCCESS
+                    # print('AreaPerilLookup.:do_lookup_location: ' +
+                    #       'Found match for {0},{1} = {2}'.format(
+                    #             lat, lon, area_peril_id))
                     break
 
         return {

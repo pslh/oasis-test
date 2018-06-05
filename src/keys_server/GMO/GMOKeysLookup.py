@@ -30,6 +30,9 @@ from .utils import (
     VulnerabilityLookup,
 )
 
+#
+# Public entry point
+#
 __all__ = [
   'GMOKeysLookup'
 ]
@@ -42,28 +45,28 @@ class GMOKeysLookup(OasisBaseKeysLookup):
 
     _LOCATION_RECORD_META = {
         'id': {
-            'source_header': 'row_id', 'csv_data_type': int,
+            'source_header': 'ROW_ID', 'csv_data_type': int,
             'validator': to_int, 'desc': 'Location ID'
         },
         'lon': {
-            'source_header': 'longitude', 'csv_data_type': float,
+            'source_header': 'LONGITUDE', 'csv_data_type': float,
             'validator': to_float, 'desc': 'Longitude'
         },
         'lat': {
-            'source_header': 'latitude', 'csv_data_type': float,
+            'source_header': 'LATITUDE', 'csv_data_type': float,
             'validator': to_float, 'desc': 'Latitude'
         },
         'coverage': {
-            'source_header': 'cov1', 'csv_data_type': int,
+            'source_header': 'COV1', 'csv_data_type': int,
             'validator': to_int, 'desc': 'Coverage'
         },
         'taxonomy': {
-            'source_header': 'bldgclass',
+            'source_header': 'BLDGCLASS',
             'csv_data_type': str,
             'validator': to_string, 'desc': 'Class #1'
         },
         'occupancy': {
-            'source_header': 'occtype',
+            'source_header': 'OCCTYPE',
             'csv_data_type': str,
             'validator': to_string, 'desc': 'Class #2'
         }

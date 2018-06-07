@@ -21,9 +21,10 @@ footprint.bin \
 footprint.idx \
 vulnerability.bin \
 events.bin \
-items.bin \
 occurrence.bin \
 returnperiods.bin 
+
+#items.bin \
 
 #
 # Standard targets

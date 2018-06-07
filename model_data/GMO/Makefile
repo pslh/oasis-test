@@ -7,7 +7,8 @@
 # Model specific parameters
 #
 INVESTIGATION_TIME=500
-INTENSITY_BINS=50
+# TODO extract from intensity_bin_dict.csv (sort|tail -n | awk...)
+INTENSITY_BINS=61
 DAMAGE_BINS=200
 
 #
@@ -22,7 +23,7 @@ vulnerability.bin \
 events.bin \
 items.bin \
 occurrence.bin \
-returnperiods.bin \
+returnperiods.bin 
 
 #
 # Standard targets
@@ -44,6 +45,7 @@ damage_bin_dict.bin: damage_bin_dict.csv
 	damagebintobin < damage_bin_dict.csv > damage_bin_dict.bin
 
 footprint.idx: footprint.bin
+	footprinttobin -i $(INTENSITY_BINS) < footprint.csv > footprint.bin
 
 footprint.bin: footprint.csv
 	footprinttobin -i $(INTENSITY_BINS) < footprint.csv > footprint.bin

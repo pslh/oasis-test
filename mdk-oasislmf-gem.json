@@ -1,7 +1,6 @@
 {
-    "TEST_source_exposures_file_path": "tests/data/dom-rep-146-10-h.csv", 
-    "FULL_source_exposures_file_path": "tests/data/dom-rep-146-all.csv", 
-    "source_exposures_file_path": "tests/data/dom-rep-146-pga-only.csv", 
+    "source_exposures_file_path": "tests/data/data-10.csv", 
+    "FULL_source_exposures_file_path": "tests/data/dom-rep-all.csv", 
     "analysis_settings_json_file_path": "analysis_settings.json",
     "source_account_file_path": "tests/data/source-acc-dom-rep.csv", 
     "dont-touch" : "-------",

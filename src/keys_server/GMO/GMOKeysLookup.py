@@ -88,7 +88,7 @@ class GMOKeysLookup(OasisBaseKeysLookup):
 
         self.area_peril_lookup = AreaPerilLookup(
             areas_file=os.path.join(
-                self.keys_data_directory, 'area_peril_dict.csv')
+                self.keys_data_directory, 'areaperil_dict.csv')
         ) if keys_data_directory else AreaPerilLookup()
 
         self.vulnerability_lookup = VulnerabilityLookup(

@@ -6,10 +6,11 @@
 #
 # Model specific parameters
 #
-INVESTIGATION_TIME=500
+#INVESTIGATION_TIME=500
+INVESTIGATION_TIME=5
 # TODO extract from intensity_bin_dict.csv (sort|tail -n | awk...)
-INTENSITY_BINS=61
-DAMAGE_BINS=200
+INTENSITY_BINS=980
+DAMAGE_BINS=500
 
 #
 # Binary file we want to generate

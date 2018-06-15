@@ -6,11 +6,19 @@
 #
 # Model specific parameters
 #
-#INVESTIGATION_TIME=500
-INVESTIGATION_TIME=5
-# TODO extract from intensity_bin_dict.csv (sort|tail -n | awk...)
-INTENSITY_BINS=980
-DAMAGE_BINS=500
+INVESTIGATION_TIME=500
+# TODO read investigation time - max period is not necessarily the right number
+# MAX_P := $(shell awk -F',' '{print $$2}' occurrence.csv | sort -n | tail -n 1)
+
+# extract number of intensity bins from intensity_bin_dict.csv 
+INTENSITY_BINS := $(shell awk -F',' '{print $$1}' intensity_bin_dict.csv | sort -n | tail -n 1)
+
+# extract number of damage bins from damage_bin_dict.csv 
+DAMAGE_BINS := $(shell awk -F',' '{print $$1}' damage_bin_dict.csv | sort -n | tail -n 1)
+
+foo:
+	echo $(INTENSITY_BINS)
+	echo $(MAX_P)
 
 #
 # Binary file we want to generate
@@ -25,7 +33,6 @@ events.bin \
 occurrence.bin \
 returnperiods.bin 
 
-#items.bin \
 
 #
 # Standard targets
@@ -62,8 +69,9 @@ events.bin: events.csv
 items.bin: items.csv
 	itemtobin < items.csv > items.bin
 
-occurrence.bin: occurrence.csv
+occurrence.bin: occurrence.csv intensity_bin_dict.csv
 	occurrencetobin -P$(INVESTIGATION_TIME) < occurrence.csv > occurrence.bin
+
 
 returnperiods.bin: returnperiods.csv
 	returnperiodtobin < returnperiods.csv > returnperiods.bin 

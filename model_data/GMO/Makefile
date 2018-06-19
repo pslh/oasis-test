@@ -16,10 +16,6 @@ INTENSITY_BINS := $(shell awk -F',' '{print $$1}' intensity_bin_dict.csv | sort 
 # extract number of damage bins from damage_bin_dict.csv 
 DAMAGE_BINS := $(shell awk -F',' '{print $$1}' damage_bin_dict.csv | sort -n | tail -n 1)
 
-foo:
-	echo $(INTENSITY_BINS)
-	echo $(MAX_P)
-
 #
 # Binary file we want to generate
 #

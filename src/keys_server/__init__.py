@@ -1,5 +1,5 @@
 """
 Package initialiser.
 """
-from utils import *
+from .utils import *
 from .GMO import *

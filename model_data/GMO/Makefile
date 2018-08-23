@@ -6,7 +6,7 @@
 #
 # Model specific parameters
 #
-INVESTIGATION_TIME=500
+INVESTIGATION_TIME=5000
 # TODO read investigation time - max period is not necessarily the right number
 # MAX_P := $(shell awk -F',' '{print $$2}' occurrence.csv | sort -n | tail -n 1)
 
@@ -50,10 +50,10 @@ damage_bin_dict.bin: damage_bin_dict.csv
 	damagebintobin < damage_bin_dict.csv > damage_bin_dict.bin
 
 footprint.idx: footprint.bin
-	footprinttobin -i $(INTENSITY_BINS) < footprint.csv > footprint.bin
+	gzip -d -c footprint.csv.gz | footprinttobin -i $(INTENSITY_BINS) > footprint.bin
 
-footprint.bin: footprint.csv
-	footprinttobin -i $(INTENSITY_BINS) < footprint.csv > footprint.bin
+footprint.bin: footprint.csv.gz
+	gzip -d -c footprint.csv.gz | footprinttobin -i $(INTENSITY_BINS) > footprint.bin
 
 vulnerability.bin: vulnerability.csv
 	vulnerabilitytobin -d $(DAMAGE_BINS) \

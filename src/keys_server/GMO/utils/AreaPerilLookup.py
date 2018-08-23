@@ -3,6 +3,7 @@
 import io
 import csv
 import logging
+from rtree import index
 
 from shapely.geometry import (
     Point,
@@ -23,7 +24,8 @@ class AreaPerilLookup(object):
     Functionality to perform an area peril lookup.
     '''
 
-    _lookup_data = []
+    _lookup_data = index.Index()
+    _gridSpacing = 0.05 # cell grid spacing
 
     def __init__(self, areas_file=None):
         if areas_file:
@@ -37,19 +39,9 @@ class AreaPerilLookup(object):
         Args:
             data: the lookup data.
         '''
-        print 'AreaPerilLookup.load_lookup_data: {0}'.format(
-            data)
-        self._lookup_data = [
-            (
-                int(r['areaperil_id']),
-                Point(float(r['lat']), float(r['lon']))
-                # MultiPoint(tuple((
-                #        float(r['LAT{}'.format(i)]),
-                #        float(r['LON{}'.format(i)])
-                #    ) for i in range(1, 5))
-                # ).convex_hull
-            ) for r in data
-        ]
+        d = self._gridSpacing/2
+        for r in data:
+            self._lookup_data.insert(int(r['areaperil_id']), (float(r['lon'])-d, float(r['lat'])-d, float(r['lon'])+d, float(r['lat'])+d))
 
     def validate_lat(self, lat):
         '''
@@ -94,20 +86,17 @@ class AreaPerilLookup(object):
         lat = location['lat']
         lon = location['lon']
 
-        if not self.validate_lat(lat) & self.validate_lon(lon):
+        if not (self.validate_lat(lat) & self.validate_lon(lon)):
             status = KEYS_STATUS_FAIL
             area_peril_id = None
             message = "Invalid lat/lon"
         else:
-            loc_point = Point(lat, lon)
-            for (cell_area_peril_id, cell) in self._lookup_data:
-                if cell.intersects(loc_point):
-                    area_peril_id = cell_area_peril_id
-                    status = KEYS_STATUS_SUCCESS
-                    # print('AreaPerilLookup.:do_lookup_location: ' +
-                    #       'Found match for {0},{1} = {2}'.format(
-                    #             lat, lon, area_peril_id))
-                    break
+            hits = list(self._lookup_data.intersection((lon,lat,lon,lat), objects=False))
+            if(len(hits)>0):
+                area_peril_id = hits[0]
+                status = KEYS_STATUS_SUCCESS
+            else:
+                message = "No intersecting cell found"
 
         return {
             'status': status,

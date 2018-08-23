@@ -1,2 +1,2 @@
-from utils import *
-from GMOKeysLookup import *
+from .utils import *
+from .GMOKeysLookup import *

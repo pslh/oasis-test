@@ -25,7 +25,7 @@ class AreaPerilLookup(object):
     '''
 
     _lookup_data = index.Index()
-    _gridSpacing = 0.05 # cell grid spacing
+    _gridSpacing = 0.05  # cell grid spacing
 
     def __init__(self, areas_file=None):
         if areas_file:
@@ -41,7 +41,12 @@ class AreaPerilLookup(object):
         '''
         d = self._gridSpacing/2
         for r in data:
-            self._lookup_data.insert(int(r['areaperil_id']), (float(r['lon'])-d, float(r['lat'])-d, float(r['lon'])+d, float(r['lat'])+d))
+            self._lookup_data.insert(
+                int(r['areaperil_id']), (
+                    float(r['lon'])-d, float(r['lat'])-d,
+                    float(r['lon'])+d, float(r['lat'])+d
+                )
+            )
 
     def validate_lat(self, lat):
         '''
@@ -91,8 +96,9 @@ class AreaPerilLookup(object):
             area_peril_id = None
             message = "Invalid lat/lon"
         else:
-            hits = list(self._lookup_data.intersection((lon,lat,lon,lat), objects=False))
-            if(len(hits)>0):
+            hits = list(self._lookup_data.intersection((
+                lon, lat, lon, lat), objects=False))
+            if(len(hits) > 0):
                 area_peril_id = hits[0]
                 status = KEYS_STATUS_SUCCESS
             else:

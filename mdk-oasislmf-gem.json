@@ -1,6 +1,7 @@
 {
     "TEST_source_exposures_file_path": "tests/data/data-10.csv", 
-    "source_exposures_file_path": "tests/data/dom-rep-all.csv", 
+    "source_exposures_file_path": "tests/data/dom-rep-146-all.csv", 
+    "peak_source_exposures_file_path": "tests/data/dom-rep-146-peak.csv", 
     "V1_source_exposures_file_path": "tests/data/dom-rep-exposure.csv", 
     "analysis_settings_json_file_path": "analysis_settings.json",
     "source_account_file_path": "tests/data/source-acc-dom-rep.csv", 

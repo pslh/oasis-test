@@ -3,3 +3,5 @@
 """
 Common utilities for all models
 """
+def testTest():
+	return(1)

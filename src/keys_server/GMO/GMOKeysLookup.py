@@ -132,6 +132,7 @@ class GMOKeysLookup(OasisBaseKeysLookup):
                 "id": record['id'],
                 "peril_id": PERIL_ID_QUAKE,
                 "coverage": record['coverage'],
+                "coverage_type": record['coverage'],
                 "area_peril_id": area_peril_rec['area_peril_id'],
                 "vulnerability_id": vuln_peril_rec['vulnerability_id'],
                 "message": message,

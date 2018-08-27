@@ -160,7 +160,7 @@ http://www.altova.com/mapforce
 	</xsl:template>
 	<xsl:template match="/">
 		<root>
-			<xsl:attribute name="xsi:noNamespaceSchemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance">C:/Users/Administrator/Desktop/git/cookiecutter-OasisModel/gemoasismodel/flamingo/generic_model/ValidationFiles/Generic_CanAcc_A.xsd</xsl:attribute>
+			<xsl:attribute name="xsi:noNamespaceSchemaLocation" namespace="http://www.w3.org/2001/XMLSchema-instance">C:/Users/Administrator/Desktop/git/cookiecutter-OasisModel/OasisPiWind/flamingo/generic_model/ValidationFiles/Generic_CanAcc_A.xsd</xsl:attribute>
 			<xsl:for-each select="root">
 				<xsl:call-template name="agt:MapToGeneric_CanAcc_A_var13_resultof_map">
 					<xsl:with-param name="var12_current" select="."/>

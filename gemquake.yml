@@ -1,17 +1,17 @@
 version: '2' 
 services:
 
-  keys_server:
+  gemfoundation_gmo_keys_server:
     image: gemfoundation_gmo_keys_server:latest
     restart: always
-    container_name: gemfoundation_gmo_keys_server
+    container_name: gem_keys_server
     ports:
      - 9004:80
 
-  execution_worker:
+  gemfoundation_model_execution_worker:
     image: coreoasis/model_execution_worker:0.392.1
     restart: always
-    container_name: gemfoundation_model_execution_worker
+    container_name: gem_worker
     volumes:
      - ${HOME}/oasis-test/model_data/GMO/:/var/oasis/model_data/GMO/DR
      - ${HOME}/upload:/var/www/oasis/upload:rw

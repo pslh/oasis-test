@@ -75,7 +75,7 @@ class GMOKeysLookup(OasisBaseKeysLookup):
     @oasis_log()
     def __init__(
             self, keys_data_directory=None,
-            supplier='GEM', model_name='GMO', model_version=None):
+            supplier='GEMFoundation', model_name='GMO', model_version=None):
         """
         Initialise the static data required for the lookup.
         """
@@ -103,7 +103,7 @@ class GMOKeysLookup(OasisBaseKeysLookup):
         """
 
         for i in range(len(loc_df)):
-            record = self._get_location_record(loc_df.iloc[i])
+            record = loc_df.iloc[i].to_dict()
 
             area_peril_rec = self.area_peril_lookup.do_lookup_location(record)
 

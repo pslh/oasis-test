@@ -103,7 +103,8 @@ class GMOKeysLookup(OasisBaseKeysLookup):
         """
 
         for i in range(len(loc_df)):
-            record = loc_df.iloc[i].to_dict()
+            #record = loc_df.iloc[i].to_dict()
+            record = self._get_location_record(loc_df.iloc[i])
 
             area_peril_rec = self.area_peril_lookup.do_lookup_location(record)
 

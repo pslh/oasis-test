@@ -26,6 +26,7 @@ footprint.bin \
 footprint.idx \
 vulnerability.bin \
 events.bin \
+events_p.bin \
 occurrence.bin \
 returnperiods.bin 
 
@@ -61,6 +62,9 @@ vulnerability.bin: vulnerability.csv
 
 events.bin: events.csv
 	evetobin < events.csv > events.bin
+
+events_p.bin: events.bin
+	cp events.bin events_p.bin
 
 items.bin: items.csv
 	itemtobin < items.csv > items.bin

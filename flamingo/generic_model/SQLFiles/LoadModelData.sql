@@ -100,10 +100,10 @@ INSERT [dbo].[OasisUser] ([OasisUserID], [OasisUserName], [ModelLicenseID], [Oas
 --UserLicense
 INSERT [dbo].[UserLicense] ([UserLicenseId], [BFEUserID], [OasisUserID]) VALUES (@UserLicenseId, 1, @OasisUserId)
 
---ModelPeril
-INSERT ModelPeril Values (@ModelPerilId+1,@ModelId,1,1,'Earthquake')
+--ModelPeril - must agree with table Peril
+INSERT ModelPeril Values (@ModelPerilId+1,@ModelId,3,3,'Earthquake')
 
---ModelPeril
+--ModelPeril - must agree with table CoverageType
 INSERT ModelCoverageType Values (@ModelCoverageTypeId+1,@ModelId,1,'1','Buildings')
 INSERT ModelCoverageType Values (@ModelCoverageTypeId+2,@ModelId,2,'2','Other Structures')
 INSERT ModelCoverageType Values (@ModelCoverageTypeId+3,@ModelId,3,'3','Contents')

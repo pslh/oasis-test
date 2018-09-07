@@ -26,6 +26,7 @@ footprint.bin \
 footprint.idx \
 vulnerability.bin \
 events.bin \
+events_p.bin \
 occurrence.bin \
 returnperiods.bin 
 
@@ -50,10 +51,10 @@ damage_bin_dict.bin: damage_bin_dict.csv
 	damagebintobin < damage_bin_dict.csv > damage_bin_dict.bin
 
 footprint.idx: footprint.bin
-	gzip -d -c footprint.csv.gz | footprinttobin -i $(INTENSITY_BINS) > footprint.bin
+	gzip -d -c footprint.csv.gz | footprinttobin -n -i $(INTENSITY_BINS) > footprint.bin
 
 footprint.bin: footprint.csv.gz
-	gzip -d -c footprint.csv.gz | footprinttobin -i $(INTENSITY_BINS) > footprint.bin
+	gzip -d -c footprint.csv.gz | footprinttobin -n -i $(INTENSITY_BINS) > footprint.bin
 
 vulnerability.bin: vulnerability.csv
 	vulnerabilitytobin -d $(DAMAGE_BINS) \
@@ -61,6 +62,9 @@ vulnerability.bin: vulnerability.csv
 
 events.bin: events.csv
 	evetobin < events.csv > events.bin
+
+events_p.bin: events.bin
+	cp events.bin events_p.bin
 
 items.bin: items.csv
 	itemtobin < items.csv > items.bin

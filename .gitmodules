@@ -1,3 +1,0 @@
-[submodule "oasis_keys_server"]
-	path = oasis_keys_server
-	url = git+ssh://git@github.com/OasisLMF/oasis_keys_server
